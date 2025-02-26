@@ -9,6 +9,9 @@ export const proposalQuery = `
       createdAt
       title
       description
+      passed
+      votingEnds
+      processed
       dao {
         totalShares
         quorumPercent
