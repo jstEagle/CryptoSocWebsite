@@ -42,14 +42,13 @@
                 });
 
                 gsap.from(".proposal-card", {
-                    y: 200,
+                    y: 100,
                     opacity: 0,
                     duration: 0.4,
-                    stagger: 0.1,
                     scrollTrigger: {
                         trigger: ".proposals-container",
-                        start: "top center+=300",
-                        end: "bottom center",
+                        start: "top center+=5",
+                        end: "top center-=100",
                         scrub: 0.5
                     },
                 });
