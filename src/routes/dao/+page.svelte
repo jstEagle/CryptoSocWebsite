@@ -262,6 +262,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         padding: 2rem;
+        color: #888888;
         transition: all 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
@@ -306,7 +307,6 @@
 
     .proposal-description {
         margin-bottom: 1rem;
-        color: #666;
     }
 
     .proposal-footer {
