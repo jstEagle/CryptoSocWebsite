@@ -189,6 +189,7 @@
     .header-container {
         text-align: center;
         margin-bottom: 4rem;
+        user-select: none;
     }
 
     .title {
@@ -211,6 +212,7 @@
         gap: 2rem;
         width: 80%;
         margin-bottom: 4rem;
+        user-select: none;
     }
 
     .stat-card {
