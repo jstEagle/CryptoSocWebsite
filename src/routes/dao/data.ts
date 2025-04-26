@@ -37,23 +37,6 @@ export async function load() {
             const quorumRequired = (Number(proposal.dao.totalShares) * Number(proposal.dao.quorumPercent)) / 100;
             const progressPercent = (totalVoteBalance / quorumRequired) * 100;
             const date = new Date(Number(proposal.createdAt) * 1000);
-            const ending = new Date(Number(proposal.votingEnds) * 1000);
-            const currentDate = new Date();
-
-            let propStatus;
-            if (currentDate > ending) {
-                // Voting period has ended
-                if (totalVoteBalance >= quorumRequired) {
-                    // Quorum reached
-                    propStatus = Number(proposal.yesBalance) > Number(proposal.noBalance) ? "Passed" : "Failed";
-                } else {
-                    // Quorum not reached
-                    propStatus = "Failed";
-                }
-            } else {
-                // Still active
-                propStatus = "Active";
-            }
             
             return {
                 title: proposal.title || `Proposal #${proposal.id}`,
@@ -65,7 +48,9 @@ export async function load() {
                     required: quorumRequired,
                     percent: proposal.dao.quorumPercent
                 },
-                status: propStatus,
+                status: progressPercent >= 100 ? 
+                    (Number(proposal.yesBalance) > Number(proposal.noBalance) ? 'Passed' : 'Failed') 
+                    : 'Active',
                 createdAt: date.toLocaleDateString('en-GB', {
                     day: '2-digit',
                     month: '2-digit',

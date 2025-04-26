@@ -22,19 +22,22 @@
         transition: all 0.02s;
         font-weight: bold;
         cursor: pointer;
-        color: rgb(37, 37, 37);
+        color: #1f1f1f; /* Dark text for light button */
         z-index: 0;
         box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
-        transform: scale(2);
+        transform: scale(1); /* Reset scale if needed */
+        padding: 12px 24px; /* Adjust padding */
+        font-size: 1rem; /* Adjust font size */
+        border-radius: 8px; /* Ensure radius */
     }
 
     .button:hover {
-        background: rgb(193, 228, 248);
-        color: rgb(33, 0, 85);
+        background: #f0f0f0; /* Lighter background on hover */
+        color: #1a1a1a; /* Darker text on hover */
     }
 
     .button:active {
-        transform: scale(2.8);
+        transform: scale(0.98); /* Slight shrink on click */
     }
 
     .hoverEffect {
@@ -50,12 +53,12 @@
     }
 
     .hoverEffect div {
-        background: rgb(222, 0, 75);
+        /* Bitcoin Orange Gradient */
         background: linear-gradient(
             90deg,
-            #02e77c 0%,
-            rgb(70, 255, 233) 49%,
-            #00b4d8 100%
+            var(--color-theme-1) 0%,
+            var(--color-theme-2) 49%,
+            #ffad4a 100% /* Lighter orange for end */
         );
         border-radius: 40rem;
         width: 10rem;

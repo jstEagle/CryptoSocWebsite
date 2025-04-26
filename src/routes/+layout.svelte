@@ -7,10 +7,12 @@
 
 <div class="app">
 	<main>
-		<CryptoFloatingCards />
 		{@render children()}
 	</main>
 </div>
 
 <style>
+	main {
+		overflow: hidden;
+	}
 </style>

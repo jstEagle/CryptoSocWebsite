@@ -1,144 +1,46 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import gsap from 'gsap';
-	import { ScrollTrigger } from 'gsap/all';
-
     import GradientButton from '$lib/Components/GradientButton.svelte';
     import Card from '$lib/Components/Card.svelte';
     import Footer from '$lib/Components/Footer.svelte';
-
-	gsap.registerPlugin(ScrollTrigger);
-
-	onMount(() => {
-        gsap.set(".header-container", { scale: 1, y: "0vh"});
-
-        gsap.to(".header-container", {
-            scrollTrigger: {
-                trigger: ".header-container",
-                start: "center center",
-                end: "+= 800px",
-                pin: true,
-                scrub: 2
-            },
-            scale: 0.6,
-            y: "-10vh",
-            ease: "power2.inOut"
-        });
-
-        // Scroll indicator animations
-        gsap.to(".scroll-dot", {
-            y: 8,
-            repeat: -1,
-            duration: 1.5,
-            ease: "power2.inOut",
-            yoyo: true
-        });
-
-        // Fade out scroll indicator on scroll
-        gsap.to(".scroll-indicator", {
-            scrollTrigger: {
-                trigger: ".header-container",
-                start: "top top",
-                end: "+=200",
-                scrub: true
-            },
-            opacity: 0,
-            y: 20
-        });
-
-        gsap.from(".card-section", {
-            x: -1600,
-            duration: 1,
-            scrollTrigger: {
-                trigger: ".card-section",
-                start: "top center+=300",
-                end: "top center-=100",
-                scrub: 1
-            }
-        });
-
-        // Individual card animations
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, index) => {
-            gsap.from(card, {
-                x: index % 2 === 0 ? -400 : 400,
-                opacity: 0,
-                duration: 0.5,
-                scale: 0.5,
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top center+=200',
-                    end: 'top center-=150',
-                    scrub: 1,
-                    pin: false,
-                }
-            });
-        });
-
-        gsap.from(".action-buttons", {
-            y: 50,
-            opacity: 0,
-            duration: 0.6,
-            scale: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".action-buttons",
-                start: "top center+=200",
-                end: "top center-=200",
-                scrub: 1,
-                pin: false,
-            }
-        });
-	});
 </script>
 
 <svelte:head>
-	<title>CryptoSOC</title>
-	<meta name="description" content="UC CryptoSOC website" />
+    <title>CryptoSOC</title>
+    <meta name="description" content="UC CryptoSOC website" />
 </svelte:head>
 
 <section class="container">
-	<div class="header-container">
-		<h1 class="title">CryptoSOC</h1>
-		<div class="subtitle">The future of finance and ownership</div>
-	</div>
-
-    <div class="scroll-indicator">
-        <svg width="60" height="100" viewBox="0 0 30 50">
-            <rect x="9" y="2" width="12" height="24" rx="6" stroke="currentColor" stroke-width="2" fill="none"/>
-            <circle class="scroll-dot" cx="15" cy="10" r="3" fill="currentColor"/>
-        </svg>
+    <div class="header-container">
+        <h1 class="title">CryptoSOC</h1>
+        <div class="subtitle">The future of finance and ownership</div>
     </div>
 
-	<div class="cards-container">
-		<div class="card" id="who">
-			<h2>Who</h2>
-			<p>
-				Established in 2018 and recognized as New Zealand’s first university DAO in 2024. We are UC's hub for blockchain and decentralized finance enthusiasts.
-			</p>
-			<p>
-				We foster <u>crypto education</u>, <u>community building</u>, and <u>adoption</u> through industry events, sponsorships, and a shared passion for financial sovereignty.
-			</p>
-		</div>
-		<div class="card" id="what">
-			<h2>What</h2>
-			<p>
-				Crypto, or blockchain technology, began with Bitcoin – an open-source, decentralized, proof-of-work network created by the anonymous Satoshi Nakamoto to give people control over their own money.
-			</p>
-			<p>
-				Over the past 20+ years, blockchain has evolved to support money, gaming, data storage, computing, finance, and even real estate, enabling decentralization and tokenization across industries!
-			</p>
-		</div>
-		<div class="card" id="how">
-			<h2>How</h2>
-			<p>
-				If this sparks your interest or if you're already part of the ever-growing crypto revolution, now is the perfect time to get involved! Join the club and connect with like-minded innovators who are shaping the future of decentralized finance.
-			</p>
-			<p>
-				As a member, you'll have the opportunity to participate in our DAO, where you can help shape decisions, vote on key proposals, and truly be part of a community-driven movement.
-			</p>
-		</div>
-	</div>
+    <div class="cards-container">
+        <Card href="/about">
+            <svelte:fragment slot="title">
+                <h2>Learn more about us</h2>
+            </svelte:fragment>
+            <svelte:fragment slot="body">
+                <p>If what you read above about our community doesn't satisfy your curiosity. Click this card and learn more!</p>
+            </svelte:fragment>
+        </Card>
+        <Card href="https://docs.google.com/forms/d/e/1FAIpQLSdNJ6iozYWmHPDYHRgv9swUZrxxdhZ2oAI5cIx2JgfH8nNgqw/viewform">
+            <svelte:fragment slot="title">
+                <h2>Become a Sponsor</h2>
+            </svelte:fragment>
+            <svelte:fragment slot="body">
+                <p>If you have too much money or phylanthropy is your thing and your values align with ours, feel free to fill out a sponsorship form by clicking on this card!</p>
+            </svelte:fragment>
+        </Card>
+        <Card href="/dao">
+            <svelte:fragment slot="title">
+                <h2>Dive Deeper into the DAO</h2>
+            </svelte:fragment>
+            <svelte:fragment slot="body">
+                <p>What is a decentralized Autonomous Organisation? What does it look like? How does it operate? Why make one? If these are the questions on your mind, click this card to find out more!</p>
+            </svelte:fragment>
+        </Card>
+    </div>
 
     <div class="action-buttons">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScvnLytHluiYJqNvmRimAX7zJzYxwwd8-YoDuvrlqCCOOa5xQ/viewform" target="_blank">
@@ -175,9 +77,32 @@
             </svelte:fragment>
         </Card>
     </div>
+</section>
 
     <Footer />
-</section>
+
+<nav class="bottom-nav">
+    <a href="/" class="nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+        <span>Home</span>
+    </a>
+    <a href="/about" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+        </svg>
+        <span>About</span>
+    </a>
+    <a href="/dao" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span>DAO</span>
+    </a>
+</nav>
 
 <style>
     /* Update the container style */
@@ -193,47 +118,40 @@
 
     /* Update header-container style */
     .header-container {
-        position: relative; /* Change from sticky to relative */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-bottom: 10vh;
-        height: 100vh;
-        transform-origin: center center; /* Set transform origin for scaling */
-        will-change: transform;
-        transform: translateZ(0);
     }
 
-    .scroll-indicator {
-        margin-top: -25vh;
-        color: #888888;
+    .title {
+        position: relative;
+        z-index: 100;
+        font-size: 6rem; /* Reduced from 10rem */
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(50deg, var(--color-theme-1), var(--color-theme-2)); /* Bitcoin Orange gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 10px 15px rgba(247, 147, 26, 0.3)); /* Bitcoin Orange shadow */
+        text-shadow: 2px 2px 4px rgba(247, 147, 26, 0.2),
+            -2px -2px 4px rgba(232, 135, 26, 0.2); /* Bitcoin Orange text shadow */
+        will-change: transform;
+        transform: translateZ(0);
+        text-align: left; /* Ensure left alignment */
     }
 
-	.title {
-		position: relative;
-		z-index: 100;
-		font-size: 10rem;
-		font-weight: 800;
-		margin-bottom: 0.5rem;
-		background: linear-gradient(50deg, #02e77c, #00b4d8);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		filter: drop-shadow(0 10px 15px rgba(0, 255, 136, 0.3));
-		text-shadow: 2px 2px 4px rgba(0, 255, 136, 0.2),
-			-2px -2px 4px rgba(0, 255, 238, 0.2);
+    .subtitle {
+        position: relative;
+        z-index: 100;
+        font-size: 2rem; /* Reduced from 3rem */
+        color: rgba(255, 255, 255, 0.7); /* Lighter text color */
         will-change: transform;
         transform: translateZ(0);
-	}
-
-	.subtitle {
-		position: relative;
-		z-index: 100;
-		font-size: 3rem;
-		color: #888888;
-        will-change: transform;
-        transform: translateZ(0);
-	}
+        text-align: left; /* Ensure left alignment */
+        max-width: 600px; /* Limit the width */
+    }
 
 	.cards-container {
 		display: flex;
@@ -316,5 +234,69 @@
         height: 30vh;
         width: 80vw;
         margin-bottom: 20vh;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 12px 24px;
+        display: flex;
+        gap: 32px;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: #888;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 16px;
+        border-radius: 50px;
+    }
+
+    .nav-item:hover, .nav-item.active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-item span {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .nav-item svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .bottom-nav {
+            bottom: 10px;
+            padding: 8px 16px;
+            gap: 16px;
+        }
+
+        .nav-item {
+            padding: 6px 12px;
+        }
+
+        .nav-item svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-item span {
+            font-size: 10px;
+        }
     }
 </style>

@@ -32,9 +32,9 @@
     }
 
     .card-component {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(40, 40, 40, 0.6); /* Darker card background consistent with +page.svelte */
+		border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+		backdrop-filter: blur(10px);
         border-radius: 15px;
         padding: 1rem 2rem;
         transition: box-shadow 0.1s ease, scale 0.3s ease;
@@ -50,17 +50,18 @@
     }
 
     .card-component:hover {
-        box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+        box-shadow: 0 0 25px rgba(247, 147, 26, 0.2); /* Orange hover shadow */
     }
 
     .card-title :global(h2) {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, #01cf6b, #00cccc);
+        /* Bitcoin Orange Gradient */
+        background: linear-gradient(45deg, var(--color-theme-1), #ffb86c); /* Orange to lighter orange */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 700;
-        text-shadow: 0 0 1px rgba(0, 255, 136, 0.1);
+        text-shadow: 0 0 1px rgba(247, 147, 26, 0.1);
         text-decoration: none;
         transition: text-decoration 0.1s ease;
     }
@@ -69,12 +70,12 @@
         text-decoration: underline;
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
-        text-decoration-color: #02d56f;
+        text-decoration-color: var(--color-theme-1); /* Orange underline */
     }
 
     .card-body :global(p) {
         font-size: 1rem;
-        color: #8b8b8b;
+        color: rgba(255, 255, 255, 0.7); /* Lighter paragraph text */
         line-height: 1.6;
     }
 </style>

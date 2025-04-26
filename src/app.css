@@ -4,30 +4,46 @@
 	--font-body: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
+	/* Dark Theme Background */
+	--color-bg-0: #1a1a1a; /* Darker background */
+	--color-bg-1: #242424; /* Dark background */
+	--color-bg-2: #1f1f1f; /* Slightly lighter dark */
+	/* Bitcoin Orange Theme */
+	--color-theme-1: #f7931a; /* Bitcoin Orange */
+	--color-theme-2: #e8871a; /* Darker Orange */
+	/* Light Text */
+	--color-text: rgba(255, 255, 255, 0.87); /* Light text for dark background */
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 	font-family: var(--font-body);
 	color: var(--color-text);
 }
 
+/* Define the grid animation */
+@keyframes scrollGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    /* Adjust the values to control speed and direction */
+    /* e.g., 60px 60px will scroll diagonally down-right */
+    /* e.g., 0 60px will scroll vertically down */
+    /* e.g., 60px 0 will scroll horizontally right */
+    background-position: 60px 60px; /* Scrolls diagonally */
+  }
+}
+
+
 body {
 	min-height: 100vh;
 	margin: 0;
-	background-attachment: fixed;
 	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image: radial-gradient(
-			50% 50% at 50% 50%,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+	/* Subtle Grid Background */
+	background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+	linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 30px 30px; /* Adjust grid size as needed */
+    /* Apply the animation */
+    animation: scrollGrid 5s linear infinite; /* Adjust duration (5s) for speed */
 }
 
 ::-webkit-scrollbar {
@@ -35,20 +51,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-bg-2); /* Dark track */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter thumb */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3); /* Lighter thumb on hover */
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.2) var(--color-bg-2); /* Lighter thumb, dark track */
 }
