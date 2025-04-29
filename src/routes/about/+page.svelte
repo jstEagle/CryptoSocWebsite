@@ -46,14 +46,14 @@
         padding: 0.5rem 1rem;
         border-radius: 8px;
         transition: all 0.3s ease;
-        background: linear-gradient(45deg, #02e77c, #00b4d8);
+        background: linear-gradient(45deg, var(--color-theme-1), var(--color-theme-2));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 2px 4px rgba(0, 255, 136, 0.2));
+        filter: drop-shadow(0 2px 4px rgba(247, 147, 26, 0.2));
     }
 
     .back-link:hover {
-        filter: drop-shadow(0 4px 8px rgba(0, 255, 136, 0.3));
+        filter: drop-shadow(0 4px 8px rgba(247, 147, 26, 0.3));
         transform: translateY(-2px);
     }
 

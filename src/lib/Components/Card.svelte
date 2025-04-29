@@ -32,25 +32,24 @@
     }
 
     .card-component {
-        background: rgba(40, 40, 40, 0.6); /* Darker card background consistent with +page.svelte */
-		border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
-		backdrop-filter: blur(10px);
+        background: rgba(40, 40, 40, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
         border-radius: 15px;
-        padding: 1rem 2rem;
+        padding: 1.5rem;
         transition: box-shadow 0.1s ease, scale 0.3s ease;
-        max-width: 100%;
-        min-height: fit-content;
-        max-height: 100%;
-        width: 90%;
+        width: 100%;
+        max-width: 400px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         will-change: transform;
         transform: translateZ(0);
-    }
-
-    .card-component:hover {
-        box-shadow: 0 0 25px rgba(247, 147, 26, 0.2); /* Orange hover shadow */
+        
+        @media (max-width: 768px) {
+            padding: 1rem;
+            max-width: 100%;
+        }
     }
 
     .card-title :global(h2) {
@@ -77,5 +76,9 @@
         font-size: 1rem;
         color: rgba(255, 255, 255, 0.7); /* Lighter paragraph text */
         line-height: 1.6;
+        
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
     }
 </style>

@@ -335,7 +335,7 @@
         height: 50px;
         border: 5px solid rgba(255, 255, 255, 0.1);
         border-radius: 50%;
-        border-top-color: #02e77c;
+        border-top-color: var(--color-theme-1);
         animation: spin 1s linear infinite;
     }
 
