@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "title": "CryptoSoc Website",
+  "description": "A Svelte website for a crypto society, including pages and information for members and visitors.",
+  "tags": [
+    "Svelte",
+    "TypeScript",
+    "Crypto",
+    "Club Website"
+  ],
+  "featured": false,
+  "order": 240,
+  "links": {
+    "demo": "https://crypto-soc-website.vercel.app",
+    "repo": "https://github.com/jstEagle/CryptoSocWebsite"
+  },
+  "images": []
+}
